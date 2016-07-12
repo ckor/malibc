@@ -10,12 +10,18 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-void		ft_putchar(char c);
-
-void		ft_putstr(char *str)
+char		*ft_strupcase(char *str)
 {
-	while (*str && ++str)
+	int	i;
+
+	i = 0;
+	while (str[i])
 	{
-		ft_putchar(*(str - 1));
+		if (str[i] >= 'a' && str[i] <= 'z')
+		{
+			str[i] -= ' ';
+		}
+		i++;
 	}
+	return (str);
 }
