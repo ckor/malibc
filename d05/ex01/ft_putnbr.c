@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wzafati <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,11 +10,32 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int		main(int argc, char **argv)
+void		ft_putchar(char c);
+
+int		ft_isneg(int nbr)
 {
-	if (argc > 1)
-		ft_putstr(argv[0]);
+	return (nbr < 0) ? (1) : (0);
+}
+
+void		ft_putnbr_rec(int nbr)
+{
+	if (nbr >= 10)
+	{
+		ft_putnbr_rec(nbr / 10);
+		ft_putnbr_rec(nbr % 10);
+	}
 	else
-		//
-	return (0);
+	{
+		ft_putchar(nbr + '0');
+	}
+}
+
+void		ft_putnbr(int nbr)
+{
+	if (ft_isneg(nbr))
+	{
+		ft_putchar('-');
+		nbr = (-1) * nbr;
+	}
+	ft_putnbr_rec(nbr);
 }

@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar.c                                       :+:      :+:    :+:   */
+/*   ft_putnbr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wzafati <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,9 +10,32 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
+void		ft_putchar(char c);
 
-void		ft_putchar(char c)
+int		ft_isneg(int nbr)
 {
-	write(1, &c, 1);
+	return (nbr < 0) ? (1) : (0);
+}
+
+void		ft_putnbr_rec(int nbr)
+{
+	if (nbr >= 10)
+	{
+		ft_putnbr_rec(nbr / 10);
+		ft_putnbr_rec(nbr % 10);
+	}
+	else
+	{
+		ft_putchar(nbr + '0');
+	}
+}
+
+void		ft_putnbr(int nbr)
+{
+	if (ft_isneg(nbr))
+	{
+		ft_putchar('-');
+		nbr = (-1) * nbr;
+	}
+	ft_putnbr_rec(nbr);
 }

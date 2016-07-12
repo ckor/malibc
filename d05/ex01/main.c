@@ -1,5 +1,5 @@
-#include <stdio.h>
-#include "ft_atoi.c"
+void	ft_putnbr(int nbr);
+int	ft_atoi(char *str);
 
 int	main(int argc, char **argv)
 {
@@ -7,6 +7,6 @@ int	main(int argc, char **argv)
 
 	if (argc > 1)
 		nbr = ft_atoi(argv[1]);
-	printf("%d", nbr);
+	ft_putnbr(nbr);
 	return (0);
 }
