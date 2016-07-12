@@ -1,7 +1,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_atoi.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wzafati <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -10,22 +10,28 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-int		ft_atoi(char *str);
-
-void		ft_putstr(char *str);
-
-char		*ft_strncpy(char *dest, char *src, unsigned int n);
-
-int		main(int argc, char **argv)
+unsigned int	ft_isdigit(char c)
 {
-	char	tab[5];
-	int	cnbr;
+	return (c >= '0' && c <= '9') ? (1) : (0);
+}
 
-	if (argc > 2)
-	{
-		cnbr = ft_atoi(argv[2]);
-		ft_strncpy((char*)&tab, argv[1], cnbr);
-		ft_putstr((char*)&tab);
-	}
-	return (0);
+int		ft_isspace(char c)
+{
+	return (c == ' ' || c == '\t' || c == '\n' ||
+		c == '\r' || c == '\f' || c == '\v') ? (1) : (0);
+}
+
+int		ft_atoi(char *str)
+{
+	int s;
+	int n;
+
+	n = 0;
+	while (ft_isspace(*str))
+		str = str + 1;
+	s = (*str == '-') ? (-1) : (1);
+	str = str + (*str ==  '-' || *str == '+');
+	while ((ft_isdigit(*str)) && (n = 10 * n + (*str - '0')))
+		str = str + 1;
+	return (s * n);
 }
