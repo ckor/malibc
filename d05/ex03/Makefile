@@ -1,4 +1,4 @@
-EXEC		=	my_strcpry
+EXEC		=	my_strcpy
 
 SRCS		=	$(wildcard *.c)
 
