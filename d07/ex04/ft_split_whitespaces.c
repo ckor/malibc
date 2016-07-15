@@ -76,6 +76,6 @@ char		**ft_split_whitespaces(char *str)
 	    ret[b++][c] = '\0';
 	}
     }
-    ret[b] = NULL;
+    ret[b] = 0;
     return (ret);
 }
