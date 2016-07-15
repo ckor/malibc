@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"libft.h"
+#include	"ft_stock_par.h"
 
 int		ft_is_delimiter(char c)
 {

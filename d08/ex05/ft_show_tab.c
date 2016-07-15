@@ -28,8 +28,8 @@ void			ft_putnbr(int n)
 	if (n < 0 && (n = -(n)))
 		ft_putchar('-');
 	if (n > 9)
-		ft_putnbr(nb / 10);
-	ft_putchar('0' + (nb % 10));
+		ft_putnbr(n / 10);
+	ft_putchar('0' + (n % 10));
 }
 
 void			ft_print_wordtab(char **tab)
@@ -44,13 +44,16 @@ void			ft_print_wordtab(char **tab)
 
 void			ft_show_tab(struct s_stock_par *par)
 {
-	while (par && par->str)
-	{
-		ft_putstr(par->str);
-		ft_putchar('\n');
-		ft_putnbr(par->size_param);
-		ft_putchar('\n');
-		ft_print_wordtab(par->tab);
-		++par;
-	}
+    int			i;
+
+    i = 0;
+    while (par[i].str)
+    {
+	ft_putstr(par[i].copy);
+	ft_putchar('\n');
+	ft_putnbr(par[i].size_param);
+	ft_putchar('\n');
+	ft_print_wordtab(par[i].tab);
+	++i;
+    }
 }

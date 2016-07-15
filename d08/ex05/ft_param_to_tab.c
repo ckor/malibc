@@ -12,9 +12,9 @@
 
 #include				"ft_stock_par.h"
 
-int						ft_strlen(char *str)
+int					ft_strlen(char *str)
 {
-	int			len;
+	int				len;
 
 	len = 0;
 	while (str[len])
@@ -24,9 +24,9 @@ int						ft_strlen(char *str)
 
 char					*ft_strdup(char *src)
 {
-	int			len;
-	int			i;
-	char		*ret;
+	int				len;
+	int				i;
+	char				*ret;
 
 	len = ft_strlen(src);
 	ret = (char*)malloc(sizeof(*ret) * (len + 1));
@@ -40,21 +40,21 @@ char					*ft_strdup(char *src)
 
 }
 
-struct s_stock			*ft_param_to_tab(int ac, char **av)
+struct s_stock_par			*ft_param_to_tab(int ac, char **av)
 {
-	struct s_stock		*ret;
-	int					i;
+	struct s_stock_par		*ret;
+	int				i;
 
-	if ((ret = (struct s_stock *)malloc(sizeof(t_stock_par) * (ac + 1))) != NULL)
+	if ((ret = (struct s_stock_par *)malloc(sizeof(t_stock_par) * (ac + 1))) != NULL)
 		return (NULL);
 	i = 0;
 	while (i < ac)
 	{
 		ret[i].size_param	= ft_strlen(av[i]);
-		ret[i].str			= av[i];
-		ret[i].copy			= ft_strdup(av[i]);
-		ret[i].tab			= ft_split_whitespaces(av[i]);
-		i++
+		ret[i].str		= av[i];
+		ret[i].copy		= ft_strdup(av[i]);
+		ret[i].tab		= ft_split_whitespaces(av[i]);
+		i++;
 	}
 	ret[i].str = 0;
 	return (ret);

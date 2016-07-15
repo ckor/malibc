@@ -10,16 +10,16 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include		"ft_param_to_tab.h"
+#include		"ft_stock_par.h"
 
-int				main(int argc, char **argv)
+int			main(int argc, char **argv)
 {
-    t_stock_par	*stock;
+    struct s_stock_par	*stock;
 
-	if (stock = ft_param_to_tab(argc, argv))
-	{
-		ft_show_tab(stock);
-		free(stock);
-	}
+    if ((stock = ft_param_to_tab(argc, argv)) != NULL)
+    {
+	ft_show_tab(stock);
+	free(stock);
+    }
     return (0);
 }
