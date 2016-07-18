@@ -22,7 +22,7 @@ OBJS		=	$(addprefix $(BUILD_DIR), $(FILES:=.o))
 CFLAGS		+=	-W -Wall -Werror -Wextra -pedantic -ansi
 CC			=	gcc
 LINKER		=	ar
-RM			=	@rm -f
+RM			=	@/bin/rm -f
 OBJ_CLEAN	=	@find . -name "*.o" -delete
 CLEAN		=	@find . -name "*~" -delete -o -name "\#*\#" -delete
 
