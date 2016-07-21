@@ -13,32 +13,66 @@
 #include "ft_utils.h"
 #include "ft_list.h"
 
-void		test(int ac, char **av)
+void		ft_list_print_all(t_list *list)
 {
-	int		i;
+	t_list	*cursor;
+	char	*str;
 
-	i = 1;
-	while (i < ac && *(av + i))
+	cursor = list;
+	while (cursor)
 	{
-		ft_putstr(*(av + i));
-		if ((++i) != ac)
-			ft_putchar('\n');
+		str = cursor->data;
+		ft_putstr(str);
+		ft_putchar('\n');
+		cursor = cursor->next;
 	}
 }
 
-int			main(void)
+void		ft_list_delete(t_list **list)
 {
-	int		nbr;
-	int		*ret;
-	t_list	*p;
+	ft_list_clear(list);
+	free(list);
+}
 
-	nbr = 42;
-	p = ft_create_elem(&nbr);
-	if (p != NULL)
-		if (p->data != NULL)
-		{
-			ret = p->data;
-			ft_putnbr(*ret);
-		}
+int			main(int ac, char **av)
+{
+	t_list	*list;
+	t_list	*last;
+	char	*str;
+	int		len;
+
+	if (ac <= 1)
+	{
+		ft_putstr("Error:\nUsage: ");
+		ft_putstr(av[0]);
+		ft_putstr(" [Arg 1] [Arg ...]\n");
+		return (0);
+	}
+
+	if ((list = ft_list_push_params(ac, av)) == NULL)
+		return (0);
+
+	ft_list_print_all(list);
+
+	len = ft_list_size(list);
+	ft_putchar('\n');
+	ft_putstr("list length: ");
+	ft_putnbr(len);
+	ft_putchar('\n');
+
+	last = ft_list_last(list);
+	str = last->data;
+	ft_putstr("last value: ");
+	ft_putstr(str);
+	ft_putchar('\n');
+
+	ft_list_clear(&list);
+	len = ft_list_size(list);
+	ft_putchar('\n');
+	ft_putstr("list length: ");
+	ft_putnbr(len);
+	ft_putchar('\n');
+
+	ft_list_delete(&list);
 	return (0);
 }

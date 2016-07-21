@@ -15,13 +15,16 @@
 # include <unistd.h>
 # include <stdlib.h>
 
-typedef enum	e_bool
-{
-	false,
-	true
-}				t_bool;
 void			ft_putchar(char c);
 int				ft_strlen(char *str);
 void			ft_putstr(char *str);
+unsigned int	ft_isdigit(char c);
+int				ft_isneg(int nbr);
+int				ft_isspace(char c);
+int				ft_atoi(char *str);
 void			ft_putnbr(int nbr);
+char			*ft_strdup(char *src);
+void			ft_foreach(int *tab, int length, void(*f)(int));
+int				*ft_map(int *tab, int length, int(*f)(int));
+int				ft_any(char **tab, int(*f)(char*));
 #endif

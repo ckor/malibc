@@ -28,17 +28,25 @@ void		test(int ac, char **av)
 
 int			main(void)
 {
-	int		nbr;
+	int		nbrs[5] = {42, 1337, -42, 101, 404};
 	int		*ret;
-	t_list	*p;
+	t_list	**p;
 
-	nbr = 42;
-	p = ft_create_elem(&nbr);
-	if (p != NULL)
-		if (p->data != NULL)
-		{
-			ret = p->data;
-			ft_putnbr(*ret);
-		}
+	if ((p = malloc(sizeof(t_list*) * 5)) == NULL)
+		return (0);
+	*p = NULL;
+	ft_list_push_back(p, &nbrs[0]);
+	ft_list_push_back(p, &nbrs[1]);
+	ft_list_push_back(p, &nbrs[2]);
+	ft_list_push_back(p, &nbrs[3]);
+	ft_list_push_back(p, &nbrs[4]);
+	while ((*p) != NULL && (*p)->data != NULL)
+	{
+		ret = (*p)->data;
+		ft_putnbr(*ret);
+		ft_putchar('\n');
+		(*p) = (*p)->next;
+	}
+	free(p);
 	return (0);
 }

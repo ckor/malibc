@@ -1,27 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utils.h                                         :+:      :+:    :+:   */
+/*   ft_list.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wzafati <wzafati@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/18 12:20:19 by wzafati           #+#    #+#             */
-/*   Updated: 2016/07/18 12:20:21 by wzafati          ###   ########.fr       */
+/*   Created: 2016/07/19 12:20:19 by wzafati           #+#    #+#             */
+/*   Updated: 2016/07/19 12:20:21 by wzafati          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_UTILS_H
-# define FT_UTILS_H
-# include <unistd.h>
+#ifndef FT_LIST_H
+# define FT_LIST_H
 # include <stdlib.h>
 
-typedef enum	e_bool
+typedef struct			s_list
 {
-	false,
-	true
-}				t_bool;
-void			ft_putchar(char c);
-int				ft_strlen(char *str);
-void			ft_putstr(char *str);
-void			ft_putnbr(int nbr);
+	struct s_list		*next;
+	void				*data;
+}						t_list;
+t_list					*ft_create_elem(void *data);
+t_list					*ft_list_last(t_list *begin_list);
+void					ft_list_push_back(t_list **begin_list, void *data);
+void					ft_list_push_front(t_list **begin_list, void *data);
+int						ft_list_size(t_list *begin_list);
 #endif

@@ -1,27 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utils.h                                         :+:      :+:    :+:   */
+/*   ft_foreach.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wzafati <wzafati@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/18 12:20:19 by wzafati           #+#    #+#             */
-/*   Updated: 2016/07/18 12:20:21 by wzafati          ###   ########.fr       */
+/*   Created: 2016/07/18 10:34:40 by wzafati           #+#    #+#             */
+/*   Updated: 2016/07/18 10:34:44 by wzafati          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_UTILS_H
-# define FT_UTILS_H
-# include <unistd.h>
-# include <stdlib.h>
+#include "ft_utils.h"
 
-typedef enum	e_bool
+void		ft_foreach(int *tab, int length, void(*f)(int))
 {
-	false,
-	true
-}				t_bool;
-void			ft_putchar(char c);
-int				ft_strlen(char *str);
-void			ft_putstr(char *str);
-void			ft_putnbr(int nbr);
-#endif
+	int		i;
+
+	i = 0;
+	while (i < length)
+	{
+		f(tab[i]);
+		i++;
+	}
+	return ;
+}

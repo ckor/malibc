@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utils.h                                         :+:      :+:    :+:   */
+/*   ft_list_push_back.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wzafati <wzafati@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/18 12:20:19 by wzafati           #+#    #+#             */
-/*   Updated: 2016/07/18 12:20:21 by wzafati          ###   ########.fr       */
+/*   Created: 2016/07/19 12:30:17 by wzafati           #+#    #+#             */
+/*   Updated: 2016/07/19 12:37:15 by wzafati          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_UTILS_H
-# define FT_UTILS_H
-# include <unistd.h>
-# include <stdlib.h>
+#include "ft_utils.h"
+#include "ft_list.h"
 
-typedef enum	e_bool
+void			ft_list_push_back(t_list **begin_list, void *data)
 {
-	false,
-	true
-}				t_bool;
-void			ft_putchar(char c);
-int				ft_strlen(char *str);
-void			ft_putstr(char *str);
-void			ft_putnbr(int nbr);
-#endif
+	t_list		*cursor;
+	t_list		*back;
+
+	cursor = *begin_list;
+	back = ft_create_elem(data);
+	while ((cursor) && (cursor->next) && (cursor = cursor->next));
+	if (cursor)
+		cursor->next = back;
+	else
+		*begin_list = back;
+}

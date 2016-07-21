@@ -1,27 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utils.h                                         :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wzafati <wzafati@student.42.fr>            +#+  +:+       +#+        */
+/*   By: wzafati <marvin@42.fr>                     +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/18 12:20:19 by wzafati           #+#    #+#             */
-/*   Updated: 2016/07/18 12:20:21 by wzafati          ###   ########.fr       */
+/*   Created: 2016/07/10 03:14:17 by wzafati           #+#    #+#             */
+/*   Updated: 2016/07/12 16:13:17 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_UTILS_H
-# define FT_UTILS_H
-# include <unistd.h>
-# include <stdlib.h>
+#include	"ft_utils.h"
 
-typedef enum	e_bool
+int		ft_strlen(char *str)
 {
-	false,
-	true
-}				t_bool;
-void			ft_putchar(char c);
-int				ft_strlen(char *str);
-void			ft_putstr(char *str);
-void			ft_putnbr(int nbr);
-#endif
+	int		len;
+
+	len = 0;
+	while (str[len])
+	len++;
+	return (len);
+}

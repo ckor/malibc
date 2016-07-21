@@ -1,27 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_utils.h                                         :+:      :+:    :+:   */
+/*   ft_list_push_params.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: wzafati <wzafati@student.42.fr>            +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2016/07/18 12:20:19 by wzafati           #+#    #+#             */
-/*   Updated: 2016/07/18 12:20:21 by wzafati          ###   ########.fr       */
+/*   Created: 2016/07/19 12:30:17 by wzafati           #+#    #+#             */
+/*   Updated: 2016/07/19 12:37:15 by wzafati          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_UTILS_H
-# define FT_UTILS_H
-# include <unistd.h>
-# include <stdlib.h>
+#include "ft_utils.h"
+#include "ft_list.h"
 
-typedef enum	e_bool
+t_list		*ft_list_push_params(int ac, char **av)
 {
-	false,
-	true
-}				t_bool;
-void			ft_putchar(char c);
-int				ft_strlen(char *str);
-void			ft_putstr(char *str);
-void			ft_putnbr(int nbr);
-#endif
+	t_list	**list;
+	int		i;
+
+	i = 1;
+	if ((list = ft_list_new(ac)) == NULL)
+		return (NULL);
+	while (i < ac && av[i])
+		ft_list_push_back(list, av[i++]);
+	ft_list_push_back(list, av[0]);
+	return (*list);
+}
