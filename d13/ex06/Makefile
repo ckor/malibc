@@ -11,7 +11,7 @@
 #******************************************************************************#
 
 EXE			=	.exe
-NAME		=	my_btree_search_item$(EXE)
+NAME		=	my_btree_level_count$(EXE)
 INCLUDES	=	./
 SRCS		=	$(wildcard *.c)
 OBJS		=	$(SRCS:.c=.o)
